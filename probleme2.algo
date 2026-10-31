@@ -1,0 +1,86 @@
+// ============================================================
+// PARTIE 1 : Procédure dot_product (résultat par paramètre VAR)
+// ============================================================
+PROCEDURE dot_product(v1 : TABLEAU[1..n] DE REEL ;   
+                      v2 : TABLEAU[1..n] DE REEL ;   
+                      n  : ENTIER ;                  
+                      VAR ps : REEL)                 
+VARIABLES
+    i : ENTIER
+DEBUT
+    ps ← 0
+    POUR i DE 1 A n FAIRE
+        ps ← ps + v1[i] * v2[i]
+    FIN POUR
+FIN
+
+// ============================================================
+// PARTIE 2 : Algorithme principal avec la PROCEDURE
+// ============================================================
+ALGORITHME Orthogonalite_Procedure
+VARIABLES
+    v1, v2 : TABLEAU[1..n] DE REEL
+    n, nb, k, i : ENTIER
+    ps : REEL
+DEBUT
+    Lire(n)                       // dimension des vecteurs
+    Lire(nb)                      // nombre de couples
+
+    POUR k DE 1 A nb FAIRE
+        POUR i DE 1 A n FAIRE
+            Lire(v1[i])
+        FIN POUR
+        POUR i DE 1 A n FAIRE
+            Lire(v2[i])
+        FIN POUR
+
+        dot_product(v1, v2, n, ps)     // ps reçoit le résultat
+
+        SI ps = 0 ALORS
+            Ecrire("Couple ", k, " : vecteurs orthogonaux")
+        SINON
+            Ecrire("Couple ", k, " : vecteurs non orthogonaux")
+        FIN SI
+    FIN POUR
+FIN
+
+// ============================================================
+// PARTIE 3 : Version avec une FONCTION dot_product
+// ============================================================
+FONCTION dot_product(v1 : TABLEAU[1..n] DE REEL ;    // par valeur
+                     v2 : TABLEAU[1..n] DE REEL ;    // par valeur
+                     n  : ENTIER) : REEL             // par valeur
+VARIABLES
+    i : ENTIER
+    ps : REEL
+DEBUT
+    ps ← 0
+    POUR i DE 1 A n FAIRE
+        ps ← ps + v1[i] * v2[i]
+    FIN POUR
+    RETOURNER ps
+FIN
+
+ALGORITHME Orthogonalite_Fonction
+VARIABLES
+    v1, v2 : TABLEAU[1..n] DE REEL
+    n, nb, k, i : ENTIER
+DEBUT
+    Lire(n)
+    Lire(nb)
+
+    POUR k DE 1 A nb FAIRE
+        POUR i DE 1 A n FAIRE
+            Lire(v1[i])
+        FIN POUR
+        POUR i DE 1 A n FAIRE
+            Lire(v2[i])
+        FIN POUR
+
+        SI dot_product(v1, v2, n) = 0 ALORS
+            Ecrire("Couple ", k, " : vecteurs orthogonaux")
+        SINON
+            Ecrire("Couple ", k, " : vecteurs non orthogonaux")
+        FIN SI
+    FIN POUR
+FIN

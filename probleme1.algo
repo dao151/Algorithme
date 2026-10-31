@@ -1,0 +1,48 @@
+ALGORITHME SommeDistincts
+VARIABLES
+    A : TABLEAU[1..n] D'ENTIERS
+    B : TABLEAU[1..m] D'ENTIERS
+    n, m, i, j, somme : ENTIER
+    trouve : BOOLEEN
+
+DEBUT
+    Lire(n)
+    POUR i DE 1 A n FAIRE
+        Lire(A[i])
+    FIN POUR
+
+    Lire(m)
+    POUR i DE 1 A m FAIRE
+        Lire(B[i])
+    FIN POUR
+
+    somme ← 0
+
+    // Éléments de A absents de B
+    POUR i DE 1 A n FAIRE
+        trouve ← FAUX
+        POUR j DE 1 A m FAIRE
+            SI A[i] = B[j] ALORS
+                trouve ← VRAI
+            FIN SI
+        FIN POUR
+        SI trouve = FAUX ALORS
+            somme ← somme + A[i]
+        FIN SI
+    FIN POUR
+
+    // Éléments de B absents de A
+    POUR j DE 1 A m FAIRE
+        trouve ← FAUX
+        POUR i DE 1 A n FAIRE
+            SI B[j] = A[i] ALORS
+                trouve ← VRAI
+            FIN SI
+        FIN POUR
+        SI trouve = FAUX ALORS
+            somme ← somme + B[j]
+        FIN SI
+    FIN POUR
+
+    Ecrire("Somme des éléments distincts = ", somme)
+FIN
