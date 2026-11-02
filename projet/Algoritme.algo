@@ -1,0 +1,34 @@
+
+Algorithme AnalysePhrase 
+
+Variables <br>
+    c : caractère <br>
+    longueur : entier    // compteur 1 : nombre de caractères 
+    mots : entier        // compteur 2 : nombre de mots 
+    voyelles : entier    // compteur 3 : nombre de voyelles 
+
+Début 
+    longueur ← 0 
+    mots ← 0 
+    voyelles ← 0 
+
+    Répéter <br>
+        Lire(c) <br>
+        longueur ← longueur + 1 
+
+        Si c = ' ' Alors 
+            mots ← mots + 1 
+        FinSi <br><br>
+
+        Si c = 'a' ou c = 'e' ou c = 'i' ou c = 'o' ou c = 'u' ou c = 'y' 
+           ou c = 'A' ou c = 'E' ou c = 'I' ou c = 'O' ou c = 'U' ou c = 'Y' Alors 
+            voyelles ← voyelles + 1 
+        FinSi 
+    Jusqu'à c = '.' 
+
+    mots ← mots + 1 
+
+    Écrire("Longueur : ", longueur) 
+    Écrire("Nombre de mots : ", mots) 
+    Écrire("Nombre de voyelles : ", voyelles) 
+Fin
